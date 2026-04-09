@@ -8,97 +8,80 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans TC',sans-serif;background:#0d0f1a;color:#e8eaf6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(108,71,255,.12) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(0,184,148,.08) 0%,transparent 55%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(108,71,255,.12),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(0,184,148,.08),transparent 55%);pointer-events:none}
 .wrap{position:relative;z-index:1;width:100%;max-width:820px}
-
 .header{text-align:center;margin-bottom:48px}
 .tag{display:inline-block;background:rgba(108,71,255,.2);color:#a29bfe;border:1px solid rgba(108,71,255,.35);border-radius:20px;padding:5px 18px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px}
 .header h1{font-size:40px;font-weight:900;letter-spacing:-1px;margin-bottom:10px}
 .header h1 span{background:linear-gradient(135deg,#7c6fff,#00c9a7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .header p{font-size:15px;color:#6272a4}
-
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-
-.card{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.07);border-radius:20px;padding:32px 28px;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
-.card::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;border-radius:20px}
-.card.election::after{background:radial-gradient(ellipse at 0% 0%,rgba(99,179,237,.08),transparent 60%)}
-.card.pulse::after{background:radial-gradient(ellipse at 0% 0%,rgba(108,71,255,.1),transparent 60%)}
+.card{background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.07);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;cursor:pointer}
 .card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.15);box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.card:hover::after{opacity:1}
-
 .card-icon{font-size:44px;margin-bottom:16px}
 .card-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;margin-bottom:14px;letter-spacing:1.5px;text-transform:uppercase}
 .election .card-badge{background:rgba(99,179,237,.12);color:#63b3ed;border:1px solid rgba(99,179,237,.25)}
 .pulse .card-badge{background:rgba(108,71,255,.12);color:#a29bfe;border:1px solid rgba(108,71,255,.25)}
-
 .card h2{font-size:22px;font-weight:900;margin-bottom:10px}
 .card-desc{font-size:13px;color:#6272a4;line-height:1.75;margin-bottom:24px;flex:1}
-
 .card-btns{display:flex;gap:10px;margin-bottom:20px}
 .btn-main{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s}
 .election .btn-main{background:#63b3ed;color:#0d0f1a}.election .btn-main:hover{background:#90cdf4}
 .pulse .btn-main{background:#6c47ff;color:#fff}.pulse .btn-main:hover{background:#8064ff}
 .btn-sub{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;background:rgba(255,255,255,.05);color:#8892b0;border:1px solid rgba(255,255,255,.08);transition:all .2s}
-.btn-sub:hover{background:rgba(255,255,255,.09);color:#c0c8e0}
-
+.btn-sub:hover{background:rgba(255,255,255,.1);color:#c0c8e0}
 .card-meta{display:flex;gap:14px;padding-top:16px;border-top:1px solid rgba(255,255,255,.05)}
 .meta{font-size:11px;color:#3d4466;display:flex;align-items:center;gap:5px}
 .dot{width:6px;height:6px;border-radius:50%;background:#00c9a7;flex-shrink:0;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
 .footer{margin-top:40px;text-align:center;font-size:12px;color:#2d3561;font-family:'DM Mono',monospace}
 .footer a{color:#3d4466;text-decoration:none}
-
 @media(max-width:600px){.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
 <div class="header">
   <div class="tag">&#x1F4CA; System Portal</div>
   <h1>歡迎回來，<span>Kelly</span></h1>
   <p>選擇您要使用的分析系統</p>
 </div>
-
 <div class="cards">
 
-  <a class="card election" href="https://kellychenichun-glitch.github.io/election-monitor/">
+  <div class="card election">
     <div class="card-icon">&#x1F5F3;&#xFE0F;</div>
     <div class="card-badge">Election Intelligence</div>
     <h2>選情雷達</h2>
     <p class="card-desc">彰化縣選情社群監控系統。即時追蹤黃柏瑜、陳素月的選情動態、訊號傾向與重要等級判斷。</p>
     <div class="card-btns">
-      <a class="btn-main" href="https://kellychenichun-glitch.github.io/election-monitor/" onclick="event.stopPropagation()">&#x1F4CA; 進入前台</a>
-      <a class="btn-sub" href="https://kellychenichun-glitch.github.io/election-monitor/admin.html" onclick="event.stopPropagation()">&#x2699;&#xFE0F; 後台</a>
+      <a class="btn-main" href="https://kellychenichun-glitch.github.io/election-monitor/">&#x1F4CA; 進入前台</a>
+      <a class="btn-sub" href="https://kellychenichun-glitch.github.io/election-monitor/admin.html">&#x2699;&#xFE0F; 後台</a>
     </div>
     <div class="card-meta">
       <span class="meta"><span class="dot"></span>即時更新</span>
       <span class="meta">&#x1F4CD; 彰化縣</span>
       <span class="meta">&#x1F464; 2 候選人</span>
     </div>
-  </a>
+  </div>
 
-  <a class="card pulse" href="https://kellychenichun-glitch.github.io/pulse-radar/">
+  <div class="card pulse">
     <div class="card-icon">&#x1F4E1;</div>
     <div class="card-badge">Market Intelligence</div>
     <h2>脈動雷達</h2>
     <p class="card-desc">台灣消費市場輿情分析系統。監控品牌口碑、消費者情緒與市場趨勢，掌握第一手消費洞察。</p>
     <div class="card-btns">
-      <a class="btn-main" href="https://kellychenichun-glitch.github.io/pulse-radar/" onclick="event.stopPropagation()">&#x1F4CA; 進入前台</a>
-      <a class="btn-sub" href="https://kellychenichun-glitch.github.io/pulse-radar/admin.html" onclick="event.stopPropagation()">&#x2699;&#xFE0F; 後台</a>
+      <a class="btn-main" href="https://kellychenichun-glitch.github.io/pulse-radar/">&#x1F4CA; 進入前台</a>
+      <a class="btn-sub" href="https://kellychenichun-glitch.github.io/pulse-radar/admin.html">&#x2699;&#xFE0F; 後台</a>
     </div>
     <div class="card-meta">
       <span class="meta"><span class="dot"></span>即時更新</span>
       <span class="meta">&#x1F1F9;&#x1F1FC; 台灣全市場</span>
       <span class="meta">&#x1F3E0; 8 品牌</span>
     </div>
-  </a>
+  </div>
 
 </div>
-
-<div class="footer">&#x00A9; 2026 Kelly Chen &nbsp;·&nbsp; <a href="https://github.com/kellychenichun-glitch">GitHub</a></div>
-
+<div class="footer">&#x00A9; 2026 Kelly Chen &nbsp;&#xB7;&nbsp; <a href="https://github.com/kellychenichun-glitch">GitHub</a></div>
 </div>
 </body>
 </html>
