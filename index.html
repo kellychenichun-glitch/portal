@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>系統入口｜Kelly Chen</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans TC',sans-serif;background:#0d0f1a;color:#e8eaf6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px}
+
+/* 背景動畫 */
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(108,71,255,.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,184,148,.10) 0%,transparent 60%);pointer-events:none}
+
+.header{text-align:center;margin-bottom:56px}
+.header .tag{display:inline-block;background:rgba(108,71,255,.2);color:#a29bfe;border:1px solid rgba(108,71,255,.4);border-radius:20px;padding:5px 16px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.header h1{font-size:36px;font-weight:900;letter-spacing:-1px;margin-bottom:10px}
+.header h1 span{background:linear-gradient(135deg,#6c47ff,#00b894);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header p{font-size:16px;color:#8892b0}
+
+/* 卡片容器 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:760px;width:100%}
+
+.card{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:20px;padding:36px 32px;cursor:pointer;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden;transition:all .3s ease}
+.card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.2);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+
+.card.election::before{background:radial-gradient(ellipse at top left,rgba(99,179,237,.12),transparent 70%)}
+.card.pulse::before{background:radial-gradient(ellipse at top left,rgba(108,71,255,.12),transparent 70%)}
+.card:hover::before{opacity:1}
+
+.card-icon{font-size:48px;margin-bottom:20px;display:block}
+.card-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
+.election .card-badge{background:rgba(99,179,237,.15);color:#63b3ed;border:1px solid rgba(99,179,237,.3)}
+.pulse .card-badge{background:rgba(108,71,255,.15);color:#a29bfe;border:1px solid rgba(108,71,255,.3)}
+
+.card h2{font-size:24px;font-weight:900;margin-bottom:8px}
+.card p{font-size:14px;color:#8892b0;line-height:1.7;margin-bottom:24px}
+
+.card-links{display:flex;gap:10px}
+.card-link{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s}
+.election .card-link.primary{background:#63b3ed;color:#0d0f1a}
+.election .card-link.primary:hover{background:#90cdf4}
+.pulse .card-link.primary{background:#6c47ff;color:#fff}
+.pulse .card-link.primary:hover{background:#7c5cfc}
+.card-link.secondary{background:rgba(255,255,255,.06);color:#8892b0;border:1px solid rgba(255,255,255,.1)}
+.card-link.secondary:hover{background:rgba(255,255,255,.1);color:#e8eaf6}
+
+.card-meta{display:flex;gap:16px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.meta-item{font-size:12px;color:#5a6080;display:flex;align-items:center;gap:5px}
+.dot{width:6px;height:6px;border-radius:50%;background:#00b894;display:inline-block;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+.footer{margin-top:48px;text-align:center;font-size:12px;color:#3d4466;font-family:'DM Mono',monospace}
+.footer a{color:#5a6080;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tag">&#x1F4CA; System Portal</div>
+  <h1>歡迎回來，<span>Kelly</span></h1>
+  <p>選擇您要使用的分析系統</p>
+</div>
+
+<div class="cards">
+
+  <!-- 選情雷達 -->
+  <a class="card election" href="https://kellychenichun-glitch.github.io/election-monitor/">
+    <span class="card-icon">&#x1F5F3;&#xFE0F;</span>
+    <div class="card-badge">Election Intelligence</div>
+    <h2>選情雷達</h2>
+    <p>彰化縣選情社群監控系統。即時追蹤黃柏瑜、陳素月的選情動態、訊號傾向與重要等級。</p>
+    <div class="card-links">
+      <a class="card-link primary" href="https://kellychenichun-glitch.github.io/election-monitor/" onclick="event.stopPropagation()">&#x1F4CA; 進入前台</a>
+      <a class="card-link secondary" href="https://kellychenichun-glitch.github.io/election-monitor/admin.html" onclick="event.stopPropagation()">&#x2699;&#xFE0F; 後台管理</a>
+    </div>
+    <div class="card-meta">
+      <span class="meta-item"><span class="dot"></span> 即時更新</span>
+      <span class="meta-item">&#x1F4CD; 彰化縣</span>
+      <span class="meta-item">&#x1F464; 2 位候選人</span>
+    </div>
+  </a>
+
+  <!-- 脈動雷達 -->
+  <a class="card pulse" href="https://kellychenichun-glitch.github.io/pulse-radar/">
+    <span class="card-icon">&#x1F4E1;</span>
+    <div class="card-badge">Market Intelligence</div>
+    <h2>脈動雷達</h2>
+    <p>台灣消費市場輿情分析系統。監控品牌口碑、消費者情緒與市場趨勢，掌握第一手消費洞察。</p>
+    <div class="card-links">
+      <a class="card-link primary" href="https://kellychenichun-glitch.github.io/pulse-radar/" onclick="event.stopPropagation()">&#x1F4CA; 進入前台</a>
+      <a class="card-link secondary" href="https://kellychenichun-glitch.github.io/pulse-radar/admin.html" onclick="event.stopPropagation()">&#x2699;&#xFE0F; 後台管理</a>
+    </div>
+    <div class="card-meta">
+      <span class="meta-item"><span class="dot"></span> 即時更新</span>
+      <span class="meta-item">&#x1F1F9;&#x1F1FC; 台灣全市場</span>
+      <span class="meta-item">&#x1F3E0; 8 個品牌</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  <p>&#x00A9; 2026 Kelly Chen &nbsp;·&nbsp; <a href="https://github.com/kellychenichun-glitch">GitHub</a></p>
+</div>
+
+</body>
+</html>
